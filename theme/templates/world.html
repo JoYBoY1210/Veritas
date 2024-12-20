@@ -1,0 +1,45 @@
+{% extends "Navbar.html" %} {% block content %}
+
+<div class="topmain flex pt-5">
+  <div class="topleft w-1/2">
+    {% for i in articles|slice:":1" %}
+    <a href="{{ i.url }}" class="link" target="_blank">
+      {% if i.urlToImage %}
+      <img src="{{ i.urlToImage }}" alt="News Image">
+      {% endif %}
+      <p class="text-6xl pb-4 hover:opacity-50">{{ i.title }}</p>
+      
+    </a>
+    {% endfor %}
+  </div>
+
+  <div class="topright pl-4 w-1/2 grid grid-cols-2 grid-rows-2 gap-4">
+    {% for i in articles|slice:"1:5" %}
+    <a href="{{ i.url }}"> 
+      <div class="smallbox">
+        {% if i.urlToImage %}
+        <img src="{{ i.urlToImage }}" alt="News Image">
+        <p class="text-2xl hover:underline">{{ i.title }}</p>
+        {% endif %}
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+</div>
+
+<div class="bottomMain pt-6">
+  <div class="grid grid-cols-2 grid-rows-3 gap-4 pt-6">
+    {% for i in articles|slice:"6:12" %}
+    <a href="{{ i.url }}" class="block hover:opacity-75">
+      <div class="w-1/2 h-40 overflow-hidden rounded-md justify-items-center">
+        {% if i.urlToImage %}
+        <img src="{{ i.urlToImage }}" alt="News Image" class="w-full h-full object-cover" />
+        {% endif %}
+      </div>
+      <p class="text-lg font-medium pt-2 hover:underline">{{ i.title }}</p>
+    </a>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock content %}
